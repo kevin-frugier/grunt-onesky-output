@@ -31,8 +31,7 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     oneskyoutput: {
       default_options: {
-        platformId: '31406',
-        path: './tmp'
+        platformId: ''
       }
     },
 

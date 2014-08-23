@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     var self = this;
     var credentials = getCredentials();
     var onesky = require('onesky')(credentials.publickey, credentials.privatekey);
-    var path = this.data.path;
+    var path = path = (self.data.path === undefined) ? './tmp/lang' : this.data.path;
     var done = this.async();
     var keys,langKeys,filename;
 
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       for(var i=0; i<keys.length; i++) {
         langKeys = Object.keys(data.translation[keys[i]]);
         for(var y=0; y<langKeys.length; y++) {
-          filename = self.data.path+'/'+langKeys[y]+".json";
+          filename = path+'/'+langKeys[y]+".json";
           grunt.file.write(filename, JSON.stringify(data.translation[keys[i]][langKeys[y]]));
           grunt.log.writeln('File '+filename+' written.');
         }
