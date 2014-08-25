@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     var onesky = require('onesky')(credentials.publickey, credentials.privatekey);
     var path = path = (self.data.path === undefined) ? './tmp/lang' : this.data.path;
     var done = this.async();
-    var keys,langKeys,filename;
+    var keys,langKeys,filename,fjson;
 
     onesky.string.output({
       platformId: this.data.platformId,
@@ -42,7 +42,24 @@ module.exports = function(grunt) {
         langKeys = Object.keys(data.translation[keys[i]]);
         for(var y=0; y<langKeys.length; y++) {
           filename = path+'/'+langKeys[y]+".json";
-          grunt.file.write(filename, JSON.stringify(data.translation[keys[i]][langKeys[y]]));
+          fjson = JSON.stringify(data.translation[keys[i]][langKeys[y]]);
+          fjson = JSON.parse(fjson, function(key,value){
+          	if (value && typeof value === 'object') {
+
+      			for (var k in value) {
+        			if (/^[a-zA-Z."-_]/.test(k) && Object.hasOwnProperty.call(value, k)) {
+        				console.log(k);
+          				value[k.replace(/\"/g, '')] = value[k];
+          				delete value[k];
+        			}
+      			}
+      		}
+      		
+      		return value;
+
+          });
+          grunt.file.write(filename, JSON.stringify(fjson));
+          //grunt.log.writeln(Object.keys(data.translation[keys[i]][langKeys[y]])[0]);
           grunt.log.writeln('File '+filename+' written.');
         }
         

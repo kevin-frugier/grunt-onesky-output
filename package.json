@@ -1,7 +1,7 @@
 {
   "name": "grunt-onesky-output",
   "description": "Pull translation from onesky",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/claudiocro/grunt-onesky-output",
   "author": {
     "name": "claudiocro",
