@@ -67,8 +67,9 @@ Don't forget to add 'onesky.json' to .gitignore in order to not expose your ones
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-0.1.0
+###0.1.0
 - First release
-
-0.1.1
+###0.1.1
 - Adjust single qoutes in key's
+###0.1.2
+- Remove unecessary console logging's

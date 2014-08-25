@@ -48,8 +48,7 @@ module.exports = function(grunt) {
 
       			for (var k in value) {
         			if (/^[a-zA-Z."-_]/.test(k) && Object.hasOwnProperty.call(value, k)) {
-        				console.log(k);
-          				value[k.replace(/\"/g, '')] = value[k];
+        				value[k.replace(/\"/g, '')] = value[k];
           				delete value[k];
         			}
       			}
@@ -59,7 +58,6 @@ module.exports = function(grunt) {
 
           });
           grunt.file.write(filename, JSON.stringify(fjson));
-          //grunt.log.writeln(Object.keys(data.translation[keys[i]][langKeys[y]])[0]);
           grunt.log.writeln('File '+filename+' written.');
         }
         
