@@ -69,7 +69,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 ###0.1.0
 - First release
+
 ###0.1.1
 - Adjust single qoutes in key's
+
 ###0.1.2
 - Remove unecessary console logging's
